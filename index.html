@@ -1405,6 +1405,35 @@
 			setInterval(updateAge, 1000);
 
 			/* =========================
+        MUSIC
+        ========================== */
+
+			const music = document.getElementById("music");
+			const musicBtn = document.getElementById("musicBtn");
+
+			let isPlaying = false;
+
+			musicBtn.addEventListener("click", async () => {
+				if (!isPlaying) {
+					try {
+						await music.play();
+
+						isPlaying = true;
+
+						musicBtn.textContent = "❚❚";
+					} catch (error) {
+						alert("Add the music file at assets/music.mp3 first.");
+					}
+				} else {
+					music.pause();
+
+					isPlaying = false;
+
+					musicBtn.textContent = "♫";
+				}
+			});
+
+			/* =========================
         FLOATING HEARTS
         ========================== */
 
