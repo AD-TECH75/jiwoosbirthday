@@ -2,9 +2,8 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 
-// Repo GitHub Pages: https://ad-tech75.github.io/jiwoosbirthday/
-// Kalau nanti pindah ke domain sendiri, ubah BASE jadi "/"
-const BASE = "/jiwoosbirthday/";
+// Pages: https://jiwoosbirthday.vercel.app/
+const BASE = "/";
 
 export default defineConfig({
   base: BASE,

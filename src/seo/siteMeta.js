@@ -4,7 +4,7 @@
  * lalu samakan juga bagian statis di index.html, sitemap.xml, robots.txt.
  */
 
-export const SITE_URL = "https://ad-tech75.github.io/jiwoosbirthday/";
+export const SITE_URL = "https://jiwoosbirthday.vercel.app/";
 export const OG_IMAGE = `${SITE_URL}assets/og-image.png`;
 
 export const siteMeta = {
