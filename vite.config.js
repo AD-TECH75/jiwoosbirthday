@@ -2,7 +2,9 @@ import { fileURLToPath, URL } from "node:url";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 
-// Pages: https://jiwoosbirthday.vercel.app/
+// Deploy: https://jiwoosbirthday.vercel.app/
+// Vercel selalu serve dari root domain, jadi base HARUS "/".
+// (Beda dengan GitHub Pages yang butuh "/nama-repo/")
 const BASE = "/";
 
 export default defineConfig({

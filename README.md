@@ -72,16 +72,32 @@ Efeknya: tidak ada request ke domain pihak ketiga, font di-selfhost, dan situs t
 
 > **Catatan penting soal SPA & SEO.** Semua meta tag kritikal ditulis **statis di `index.html`**, bukan hanya lewat `@unhead/vue`. Ini disengaja: crawler WhatsApp, Telegram, Facebook, dan Discord tidak menjalankan JavaScript, jadi kalau OG tag hanya dipasang saat runtime, preview link-nya akan kosong. `@unhead/vue` tetap dipakai supaya metadata terpusat dan mudah diubah dari `src/seo/siteMeta.js` kalau nanti mau ditambah halaman.
 
-## Kalau ganti domain
+## Kalau ganti domain lagi
 
-Ubah di 5 tempat ini:
+Ubah di 6 tempat ini:
 
-1. `vite.config.js` → `BASE` (pakai `"/"` kalau domain sendiri)
+1. `vite.config.js` → `BASE` (`"/"` untuk Vercel/domain sendiri, `"/nama-repo/"` kalau balik ke GitHub Pages)
 2. `index.html` → semua URL absolut (canonical, og:url, og:image, JSON-LD)
 3. `src/seo/siteMeta.js` → `SITE_URL`
 4. `public/sitemap.xml` dan `public/robots.txt`
 5. `public/site.webmanifest` → `start_url`, `scope`, `icons.src`
+6. `vercel.json` — tidak ada URL di sini, tapi cek lagi kalau strukturnya berubah
 
-## Deploy ke GitHub Pages
+## Deploy ke Vercel
 
-Workflow `.github/workflows/deploy.yml` sudah disiapkan. Di repo GitHub: **Settings → Pages → Source: GitHub Actions**. Setiap push ke `main` akan otomatis build dan deploy.
+Situs ini sudah dikonfigurasi untuk deploy ke `https://jiwoosbirthday.vercel.app/`, di-serve dari **root domain** (bukan subfolder), makanya `BASE` di `vite.config.js` di-set `"/"`.
+
+**Lewat dashboard:**
+1. Push repo ini ke GitHub.
+2. Di [vercel.com](https://vercel.com) → **Add New → Project** → import repo.
+3. Framework preset otomatis terdeteksi sebagai Vite. Build command `npm run build`, output `dist` (sudah ada di `vercel.json`, jadi tidak perlu diisi manual).
+4. Deploy. Domain default `<nama-project>.vercel.app` — ganti nama project jadi `jiwoosbirthday` di project settings supaya URL-nya persis `jiwoosbirthday.vercel.app`.
+
+**Lewat CLI:**
+```bash
+npm i -g vercel
+vercel        # preview deploy
+vercel --prod # deploy ke domain produksi
+```
+
+`vercel.json` sudah mengatur rewrite ke `index.html` (perlu untuk SPA) dan cache header 1 tahun untuk file di `/assets/*` (aman karena nama filenya sudah di-hash oleh Vite).

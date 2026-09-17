@@ -5,4 +5,4 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
-Sitemap: https://ad-tech75.github.io/jiwoosbirthday/sitemap.xml
+Sitemap: https://jiwoosbirthday.vercel.app/sitemap.xml
