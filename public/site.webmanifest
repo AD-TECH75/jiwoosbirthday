@@ -1,0 +1,20 @@
+{
+  "name": "Happy Birthday, Jiwoo ♡",
+  "short_name": "Jiwoo ♡",
+  "description": "A little birthday website made specially for Jiwoo. ♡",
+  "start_url": "/jiwoosbirthday/",
+  "scope": "/jiwoosbirthday/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff0f6",
+  "theme_color": "#ff7eb6",
+  "lang": "id",
+  "icons": [
+    {
+      "src": "/jiwoosbirthday/assets/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

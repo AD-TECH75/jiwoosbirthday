@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Blokir crawler yang tidak perlu (opsional, hapus kalau tidak mau)
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://ad-tech75.github.io/jiwoosbirthday/sitemap.xml

@@ -1,0 +1,148 @@
+:root {
+  --pink: #ff7eb6;
+  --pink-light: #ffd6e8;
+  --pink-soft: #fff0f6;
+  --purple: #9b8cff;
+  --purple-dark: #6c5ce7;
+  --cream: #fffafc;
+  --text: #493743;
+  --muted: #806b78;
+  --white: #ffffff;
+  --shadow: 0 20px 60px rgba(155, 100, 140, 0.15);
+
+  --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   LAYOUT UMUM
+========================= */
+section {
+  padding: 110px 20px;
+}
+
+.container {
+  max-width: 1050px;
+  margin: auto;
+}
+
+.section-label {
+  text-align: center;
+  color: var(--pink);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: clamp(45px, 7vw, 75px);
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+/* =========================
+   ANIMASI GLOBAL
+========================= */
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(8deg);
+  }
+}
+
+/* =========================
+   FLOATING HEARTS
+   (di-append ke <body> lewat composable, jadi harus global)
+========================= */
+.heart {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  z-index: 20;
+  animation: heartUp linear forwards;
+}
+
+@keyframes heartUp {
+  0% {
+    transform: translateY(0) scale(0.7) rotate(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.3) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 700px) {
+  section {
+    padding: 80px 18px;
+  }
+}
+
+/* Hormati preferensi user yang mematikan animasi */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
